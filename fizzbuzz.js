@@ -1,10 +1,10 @@
 function fizzbuzz(numero) {
     let mensagem = "";
     if (numero % 3 === 0) {
-        mensagem = mensagem + "Fizz";
+        mensagem += "Fizz";
     }
     if (numero % 5 === 0) {
-        mensagem = mensagem + "Buzz";
+        mensagem += "Buzz";
     }
     if (mensagem.length === 0) {
         mensagem = String(numero);
@@ -12,4 +12,9 @@ function fizzbuzz(numero) {
     return mensagem;
 }
 
-module.exports = fizzbuzz
+for (let i = 0; i < + 20; i++) {
+    const mensagem = fizzbuzz(i)
+    console.log(mensagem)
+}
+
+module.exports.fizzbuzz = fizzbuzz
