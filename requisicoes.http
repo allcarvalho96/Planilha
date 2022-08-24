@@ -1,0 +1,3 @@
+POST https://3000-allcarvalho96-planilha-og0st4sbqb6.ws-us63.gitpod.io/transacoes
+content-type: application/json
+{"valor": 10}
