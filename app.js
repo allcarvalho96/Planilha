@@ -15,7 +15,7 @@ app.post('/transacoes', (req, res) => {
   const repositorio = new TransacoesRepositorio()
   const transacao = req.body
   repositorio.criarTransacao(transacao)
-  res.status(201).send(transacao)
+  res.send(201).send(transacao)
 })
 
 
