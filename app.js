@@ -9,13 +9,30 @@ app.use(express.json());
 app.use(express.static(`${__dirname}/public`))
 
 app.get('/transacoes', (req, res) => {
+  const repositorio = new TransacoesRepositorio()
+  const transacoes = repositorio.listarTransacoes()
+
+  let saldo = 0
+  transacoes.transacoes.forEach((transacao) => {
+    if (transacao.categoria === "Despesa") {
+      saldo = saldo - transacao.valor
+    }
+    if (transacao.categoria === "Receita") {
+      saldo = saldo + transacao.valor
+    }
+  })
+
+  transacoes.saldo = saldo
+  console.log(saldo)
+
+  res.send(transacoes)
 })
 
 app.post('/transacoes', (req, res) => {
   const repositorio = new TransacoesRepositorio()
   const transacao = req.body
   repositorio.criarTransacao(transacao)
-  res.send(201).send(transacao)
+  res.status(201).send(transacao)
 })
 
 
